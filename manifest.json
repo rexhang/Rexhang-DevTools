@@ -1,0 +1,34 @@
+{
+  "manifest_version": 2,
+  "name": "Rexhang DevTools",
+  "description": "This extension is for Chrome browser operations.",
+  "version": "1.0",
+  "permissions": [
+	"contextMenus",
+    "notifications",
+    "activeTab",
+    "tabs"
+  ],
+  "browser_action": {
+    "default_icon": "logo.png",
+    "default_title": "Rexhang DevTools",
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "16": "logo.png",
+    "48": "logo.png",
+    "128": "logo.png"
+  },
+  "background": {
+    "scripts": [
+      "js/background.js"
+    ],
+    "persistent": false
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://www.bilibili.com/"],
+      "js": ["js/jquery-1.11.1.min.js", "js/get_poster.js"]
+    }
+  ]
+}
