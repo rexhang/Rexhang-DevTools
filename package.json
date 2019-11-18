@@ -1,0 +1,22 @@
+{
+  "name": "rexhang-devtools",
+  "version": "1.0.1",
+    "keywords": [
+    "Chrome Expansion",
+    "javascript"
+  ],
+  "description": "This extension is for Chrome browser operations.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rexhang/Rexhang-DevTools.git"
+  },
+  "author": "rexhang",
+  "bugs": {
+    "url": "https://github.com/rexhang/Rexhang-DevTools/issues"
+  },
+  "homepage": "https://github.com/rexhang/Rexhang-DevTools#readme"
+}

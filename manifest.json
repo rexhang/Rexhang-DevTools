@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Rexhang DevTools",
   "description": "This extension is for Chrome browser operations.",
-  "version": "1.0",
+  "version": "1.0.1",
   "permissions": [
 	"contextMenus",
     "notifications",
