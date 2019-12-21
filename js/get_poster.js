@@ -3,8 +3,45 @@
  * author:　rexhang
  */
 
-window.onload = function(){
-	const doms = document.querySelectorAll('.spread-module');
+$(document).ready(function(){
+	// const doms = document.querySelectorAll('.card-pic');
+	// console.log(doms);
+	window.setTimeout(()=>{
+		$('body, html').animate({
+				scrollTop: $('body')[0].scrollHeight
+			},
+			500
+		);
+	}, 500);
+	
+	window.setTimeout(()=>{
+		$('body, html').animate({
+				scrollTop: 0
+			},
+			500,
+			'linear',
+			function () {
+				// const doms = document.querySelectorAll('.card-pic');
+				// console.log(doms);
+				$('.card-pic').on('mousedown', function (ev) {
+					// ev.preventDefault();
+					if (ev.button === 2){
+						// 点击了右键, 获取封面
+						const posterOrigin = $(this).find('a > img').attr('src').split('@')[0] + '@.webp';
+						// console.log(posterOrigin);
+						// 发送消息@获取到的真实海报地址
+						chrome.runtime.sendMessage(
+							{type: 'get_poster', data: posterOrigin},
+							function(response) {
+								// 打开成功
+								// console.log('收到来自后台的回复：' + response);
+							}
+						);
+					}
+				});
+			}
+		);
+	}, 600);
 	console.log(
 		`
 		/**
@@ -14,26 +51,27 @@ window.onload = function(){
 		 */
 		`
 	);
-	doms.forEach(item=>{
-		item.addEventListener('mousedown', function (ev) {
-			// ev.preventDefault();
-			if (ev.button === 2){
-				// 点击了右键, 获取封面
-				const posterOrigin = $(this).find('.lazy-img img').attr('src').split('@')[0] + '@.webp';
-				// console.log(posterOrigin);
-				// 发送消息@获取到的真实海报地址
-				chrome.runtime.sendMessage(
-					{type: 'get_poster', data: posterOrigin},
-					function(response) {
-						// 打开成功
-						// console.log('收到来自后台的回复：' + response);
-					}
-				);
-			}
-		}, false)
-	});
 	
-};
+	
+	// doms.forEach(item=>{
+	// 	item.addEventListener('mousedown', function (ev) {
+	// 		// ev.preventDefault();
+	// 		if (ev.button === 2){
+	// 			// 点击了右键, 获取封面
+	// 			const posterOrigin = $(this).find('a > img').attr('src').split('@')[0] + '@.webp';
+	// 			// console.log(posterOrigin);
+	// 			// 发送消息@获取到的真实海报地址
+	// 			chrome.runtime.sendMessage(
+	// 				{type: 'get_poster', data: posterOrigin},
+	// 				function(response) {
+	// 					// 打开成功
+	// 					// console.log('收到来自后台的回复：' + response);
+	// 				}
+	// 			);
+	// 		}
+	// 	}, false)
+	// });
+});
 
 // 发送消息@1
 // chrome.runtime.sendMessage(
